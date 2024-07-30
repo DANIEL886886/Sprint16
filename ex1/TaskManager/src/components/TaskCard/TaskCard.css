@@ -15,6 +15,23 @@
   margin: 0;
 }
 
+.card-content textarea {
+  height:60px;
+  width: 200px;
+  max-height: 60px;
+  max-width: 200px;
+  display: block;
+  padding: 0px 0px;
+  background: #fdfdfd;
+  border-color: #00000000;
+  color:#16171d;
+  }
+
+.card-content textarea:focus {
+  border-color: #00000000;
+  outline: none;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -50,11 +67,39 @@
   align-items: center;
 }
 
-.task-btn{
+.task-btn-delete{
   background: #df0808;
   font-weight: 600px;
   border:#00000000 solid;
   color: white;
+  border-radius: 10px 10px 10px 10px;
+  margin-left: 5%;
+}
+
+.task-btn-edit{
+  background: #0865df;
+  font-weight: 600px;
+  border:#00000000 solid;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.task-btn-save{
+  background: #dcdcfc;
+  font-weight: 600px;
+  border:#00000000 solid;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.task-btn-cancel{
+  background: #dcdcfc;
+  font-weight: 600px;
+  border:#00000000 solid;
+  border-color: #16171d00;
+  color: rgb(238, 238, 238);
   border-radius: 10px 10px 10px 10px;
 }
 

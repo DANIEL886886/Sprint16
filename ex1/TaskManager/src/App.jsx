@@ -5,10 +5,25 @@ import TaskCard from "./components/TaskCard/TaskCard";
 import TaskForm from "./components/TaskForm/TaskForm";
 
 function App() {
- const [taskList, setTaskList] = useState(data);
+const [taskList, setTaskList] = useState(data);
 
- const onDeleteTask = (id) => {
- setTaskList(taskList.filter((task) => task.id !== id));
+const onDeleteTask = (id) => {
+  setTaskList(taskList.filter((task) => task.id !== id));
+};
+  
+const onEditTask = (id, updatedTaskDetails) => {
+	if (!updatedTaskDetails.trim()) {
+		console.error("Cannot update task with empty details");
+		return;
+	}
+	setTaskList((prevState) =>
+		prevState.map((task) => {
+			if (task.id === id) {
+				return { ...task, details: updatedTaskDetails };
+			}
+			return task;
+		})
+	);
 };
 
 const addNewTask = (formData) => {
@@ -24,7 +39,7 @@ const addNewTask = (formData) => {
 // console.log(setTaskList);
 };
 
- const [focusTaskId, setFocusTaskId] = useState("");
+const [focusTaskId, setFocusTaskId] = useState("");
 
 return (
  <div className="app-container">
@@ -39,6 +54,7 @@ return (
    details={props.details}
    dueDate={props.dueDate}
    onDeleteTask={onDeleteTask}
+   onEditTask={onEditTask}
    />
   ))}
  </div>
