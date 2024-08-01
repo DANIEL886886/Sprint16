@@ -32,8 +32,9 @@ function TaskForm(props) {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div className="form-row">
-					<label>Task Status</label>
+					<label htmlFor="status">Task Status</label>
 					<select
+						id="status" // Added id here
 						defaultValue={formData.status}
 						name="status"
 						onChange={handleInputChange}
@@ -46,8 +47,9 @@ function TaskForm(props) {
 				</div>
 
 				<div className="form-row">
-					<label>Due Date</label>
+					<label htmlFor="dueDate">Due Date</label>
 					<input
+						id="dueDate" // Added id here
 						value={formData.dueDate}
 						name="dueDate"
 						onChange={handleInputChange}
@@ -57,15 +59,14 @@ function TaskForm(props) {
 				</div>
 
 				<div className="form-row">
-					<label>Task details</label>
+					<label htmlFor="details">Task Details</label>
 					<textarea
+						id="details" // Added id here
 						value={formData.details}
 						name="details"
 						onChange={handleInputChange}
 						className="input-primary"
-						type="text"
-						id=""
-						cols="3"
+						cols="30"
 						rows="10"
 					/>
 				</div>
