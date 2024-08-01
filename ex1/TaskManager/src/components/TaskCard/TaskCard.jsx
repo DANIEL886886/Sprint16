@@ -4,7 +4,6 @@ import DateContainer from "../DateContainer/DateContainer";
 import React, { useState } from "react";
 
 function TaskCard(props) {
-	const [taskId, setTaskId] = useState(props.id);
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [editedTaskDetails, setEditedTaskDetails] = useState(props.details);
 	const [editedTaskStatus, setEditedTaskStatus] = useState(props.status);
@@ -21,6 +20,9 @@ function TaskCard(props) {
 
 	const handleSaveChanges = (e) => {
 		e.stopPropagation();
+		console.log("Saving changes on TaskCard no:", props.id);
+		console.log("Saving changes with new status:", editedTaskStatus);
+		console.log("Saving changes with new details:", editedTaskDetails);
 		props.onEditTask(props.id, editedTaskDetails, editedTaskStatus);
 		setIsEditMode(false);
 	};
@@ -45,15 +47,46 @@ function TaskCard(props) {
 	return (
 		<div className={`card-wrapper ${focusedClass}`} onClick={setFocused}>
 			<div className="card-header">
-				<p className="task-id">{taskId}</p>
+				<p className="task-id">{props.id}</p>
 				{isEditMode ? (
 					<select
-						value={editedTaskStatus}
+						defaultValue={editedTaskStatus}
 						onChange={handleStatusChange}
 					>
-						<option value="todo">To-Do</option>
-						<option value="in-progress">In Progress</option>
-						<option value="done">Done</option>
+						<option
+							value="To-Do"
+							className={
+								editedTaskStatus === "To-Do" ? "selected" : ""
+							}
+						>
+							To-Do
+						</option>
+						<option
+							value="In-Progress"
+							className={
+								editedTaskStatus === "In-Progress"
+									? "selected"
+									: ""
+							}
+						>
+							In-Progress
+						</option>
+						<option
+							value="Urgent"
+							className={
+								editedTaskStatus === "Urgent" ? "selected" : ""
+							}
+						>
+							Urgent
+						</option>
+						<option
+							value="Done"
+							className={
+								editedTaskStatus === "Done" ? "selected" : ""
+							}
+						>
+							Done
+						</option>
 					</select>
 				) : (
 					<Badge status={props.status} />
@@ -63,10 +96,9 @@ function TaskCard(props) {
 			<div className="card-content">
 				{isEditMode ? (
 					<textarea
+						defaultValue={editedTaskDetails}
 						onChange={(e) => setEditedTaskDetails(e.target.value)}
-					>
-						{editedTaskDetails}
-					</textarea>
+					></textarea>
 				) : (
 					<p>{props.details}</p>
 				)}
@@ -88,7 +120,7 @@ function TaskCard(props) {
 								className="task-btn-save"
 								onClick={handleSaveChanges}
 							>
-								✔️
+								✅
 							</button>
 							<button
 								className="task-btn-cancel"

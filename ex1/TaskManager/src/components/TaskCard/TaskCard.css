@@ -19,7 +19,9 @@
   height:60px;
   width: 200px;
   max-height: 60px;
+  min-height: 60px;
   max-width: 200px;
+  min-width: 200px;
   display: block;
   padding: 0px 0px;
   background: #fdfdfd;
@@ -31,6 +33,25 @@
   border-color: #00000000;
   outline: none;
 }
+
+/* .card-header textarea {
+  height:20px;
+  width: 170px;
+  max-height: 20px;
+  min-height: 20px;
+  max-width: 170px;
+  min-width: 170px;
+  display: block;
+  padding: 0px 0px;
+  background: #fdfdfd;
+  border-color: #00000000;
+  color:#16171d;
+  }
+
+.card-header textarea:focus {
+  border-color: #00000000;
+  outline: none;
+} */
 
 .card-header {
   display: flex;
@@ -120,4 +141,38 @@
   border-color: #fd1100;
   border-style: solid;
   animation: border-animation 2s linear infinite;
+}
+
+.card-header select {
+  appearance: none;
+  background-color: #fff !important;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0px 4px ;
+  width: 170px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.card-header select:focus {
+  outline: none;
+  border-color: #0105fc;
+  border-width: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header select option {
+  padding: 10px;
+}
+
+.card-header select option:hover {
+  background-color: #f0f0f0;
+}
+
+.card-header select option:selected {
+  background-color: #ddd;
+}
+
+.card-header select option.selected {
+  background-color: #dcdcfc;; /* Change background color of selected option */
 }
