@@ -1,16 +1,28 @@
+// DateContainer.js
 import "./DateContainer.css";
 import React from "react";
 
 function DateContainer(props) {
-  return (
-    <div className="due-date">
-      
-      <p>Due Date</p>
+	const date = new Date(props.date); // parse the date string into a Date object
 
-      <p>{props.date.toLocaleDateString()}</p>
+	const handleDateChange = (e) => {
+		props.onDateChange(e.target.value);
+	};
 
-    </div>
-  );
+	return (
+		<div className="due-date">
+			<p>Due Date</p>
+			{props.isEditMode ? (
+				<input
+					type="date"
+					defaultValue={date.toISOString().split("T")[0]}
+					onChange={handleDateChange}
+				/>
+			) : (
+				<p>{date.toLocaleDateString()}</p>
+			)}
+		</div>
+	);
 }
 
 export default DateContainer;

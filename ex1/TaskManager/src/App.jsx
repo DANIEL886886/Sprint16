@@ -57,7 +57,12 @@ function App() {
 		setCounter((prevState) => prevState + 1);
 	};
 
-	const onEditTask = (id, updatedTaskDetails, updatedTaskStatus) => {
+	const onEditTask = (
+		id,
+		updatedTaskDetails,
+		updatedTaskStatus,
+		updatedDueDate
+	) => {
 		if (!updatedTaskDetails.trim()) {
 			console.error("Cannot update task with empty details");
 			return;
@@ -69,6 +74,7 @@ function App() {
 						...task,
 						details: updatedTaskDetails,
 						status: updatedTaskStatus,
+						dueDate: updatedDueDate,
 					};
 				}
 				return task;

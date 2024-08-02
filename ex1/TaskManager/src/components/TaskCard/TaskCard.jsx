@@ -1,3 +1,4 @@
+// TaskCard.js
 import "./TaskCard.css";
 import Badge from "../Badge/Badge";
 import DateContainer from "../DateContainer/DateContainer";
@@ -7,6 +8,7 @@ function TaskCard(props) {
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [editedTaskDetails, setEditedTaskDetails] = useState(props.details);
 	const [editedTaskStatus, setEditedTaskStatus] = useState(props.status);
+	const [editedTaskDate, setEditedTaskDate] = useState(props.dueDate);
 
 	const handleDelete = (e) => {
 		e.stopPropagation();
@@ -23,7 +25,13 @@ function TaskCard(props) {
 		console.log("Saving changes on TaskCard no:", props.id);
 		console.log("Saving changes with new status:", editedTaskStatus);
 		console.log("Saving changes with new details:", editedTaskDetails);
-		props.onEditTask(props.id, editedTaskDetails, editedTaskStatus);
+		console.log("Saving changes with new date:", editedTaskDate);
+		props.onEditTask(
+			props.id,
+			editedTaskDetails,
+			editedTaskStatus,
+			editedTaskDate
+		);
 		setIsEditMode(false);
 	};
 
@@ -32,6 +40,11 @@ function TaskCard(props) {
 		setIsEditMode(false);
 		setEditedTaskDetails(props.details);
 		setEditedTaskStatus(props.status);
+		setEditedTaskDate(props.dueDate);
+	};
+
+	const handleDateChange = (newDate) => {
+		setEditedTaskDate(newDate);
 	};
 
 	const handleStatusChange = (e) => {
@@ -105,7 +118,11 @@ function TaskCard(props) {
 			</div>
 
 			<div className="card-footer">
-				<DateContainer date={props.dueDate} />
+				<DateContainer
+					date={isEditMode ? editedTaskDate : props.dueDate}
+					isEditMode={isEditMode}
+					onDateChange={handleDateChange}
+				/>
 				{props.isFocused ? (
 					<button className="task-btn-delete" onClick={handleDelete}>
 						Delete

@@ -13,3 +13,21 @@
   letter-spacing: -0.03em;
   color: #16171d;
 }
+
+.due-date input {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: -10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+.due-date input:focus {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: -10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-style: none;
+}
