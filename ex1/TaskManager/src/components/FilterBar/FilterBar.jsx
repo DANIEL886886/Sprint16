@@ -1,5 +1,5 @@
 import React from "react";
-import "../../components/FilterBar/FilterBar.css"
+import "../../components/FilterBar/FilterBar.css";
 
 const StatusBar = ({ taskList, setStatusFilter }) => {
 	const statuses = ["To-Do", "In-Progress", "Urgent", "Done"];
@@ -19,17 +19,17 @@ const StatusBar = ({ taskList, setStatusFilter }) => {
 
 	return (
 		<div className="status-bar">
-			<div
-				className="status-filter"
+			<button
+				className="status-filter-btn"
 				onClick={() => handleStatusClick(null)}
 			>
 				<span className="status-name">All</span>
 				<span className="status-count"> ({taskList.length})</span>
-			</div>
+			</button>
 			{statuses.map((status) => (
-				<div
+				<button
 					key={status}
-					className="status-filter"
+					className="status-filter-btn"
 					onClick={() => handleStatusClick(status)}
 				>
 					<span className="status-name">{status}</span>
@@ -37,7 +37,7 @@ const StatusBar = ({ taskList, setStatusFilter }) => {
 						{" "}
 						({statusCounts[status] || 0})
 					</span>
-				</div>
+				</button>
 			))}
 		</div>
 	);

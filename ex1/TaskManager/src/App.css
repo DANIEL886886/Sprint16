@@ -12,7 +12,9 @@
   justify-content: center;
   background:rgba(32, 56, 85, 0.062);
   border-radius: 50px;
-  max-width: fit-content;
+  /* max-width: fit-content; */
+  max-width: 80%;
+  min-width: 50%;
 }
 
 .app-content h3 {
@@ -40,6 +42,7 @@
 
 .side-bar-right {
   width: 50%;
+  min-width:10%;
   margin-right:10px;
   margin-left:30px;
 }

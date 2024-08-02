@@ -4,15 +4,35 @@
   justify-content: space-between;
   align-items: center;
   width:550px;
-  height:40px;
+  height:46px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
-  /* border: 1px solid #a8abbd; */
-  border-radius: 10px;
+  /* border: 2px solid #a8abbd4f; */
+  border-radius: 15px;
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 1%;
   margin-top:2%;
   margin-bottom: 1%;
-    
+}
+
+.status-filter-btn {
+  background-color: #ffffff4f;
+  color: #070707;
+  font-weight: bold;
+  padding: 4px 8px;
+  /* border: 2px solid #a8abbd4f; */
+  border:none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.status-filter-btn:hover {
+  background-color: #3b1ce9;
+  color:white;
+  font-weight: bolder;
+}
+
+.status-name {
+  font-weight: bold;
 }

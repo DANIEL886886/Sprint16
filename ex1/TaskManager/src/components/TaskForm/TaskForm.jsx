@@ -29,7 +29,7 @@ function TaskForm(props) {
 			return;
 		}
 		setError(null);
-		console.log("FormData is : ", formData);
+		// console.log("FormData is : ", formData);
 		setFormData({ ...initialFormData });
 		props.addNewTask(formData);
 	};
