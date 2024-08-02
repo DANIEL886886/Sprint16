@@ -1,15 +1,13 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { data as initialData } from "./components/AppData/Data";
-import TaskCard from "./components/TaskCard/TaskCard";
-import TaskForm from "./components/TaskForm/TaskForm";
+import TaskViewer from "./components/TaskViewer/TaskViewer";
+import FilterBar from "./components/FilterBar/FilterBar";
 
-// Helper functions to handle localStorage
 const loadTasksFromLocalStorage = () => {
 	const tasks = localStorage.getItem("tasks");
 	return tasks
 		? JSON.parse(tasks, (key, value) => {
-				// Revive Date objects
 				if (key === "dueDate") return new Date(value);
 				return value;
 		  })
@@ -20,7 +18,6 @@ const saveTasksToLocalStorage = (tasks) => {
 	localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
-// Custom ID generator
 const generateTaskId = (taskList) => {
 	const maxId = taskList.reduce((max, task) => {
 		const taskId = parseInt(task.id.split("-")[1], 10);
@@ -32,6 +29,8 @@ const generateTaskId = (taskList) => {
 function App() {
 	const [taskList, setTaskList] = useState(loadTasksFromLocalStorage);
 	const [counter, setCounter] = useState(loadTasksFromLocalStorage().length);
+	const [focusTaskId, setFocusTaskId] = useState("");
+	const [statusFilter, setStatusFilter] = useState(null);
 
 	useEffect(() => {
 		saveTasksToLocalStorage(taskList);
@@ -82,32 +81,23 @@ function App() {
 		);
 	};
 
-	const [focusTaskId, setFocusTaskId] = useState("");
+	const filteredTaskList = taskList.filter((task) => {
+		if (!statusFilter) return true;
+		return task.status === statusFilter;
+	});
 
 	return (
-		<div className="app-container">
-			<div className="app-content">
-				{taskList.map((task) => (
-					<TaskCard
-						isFocused={focusTaskId === task.id}
-						markAsFocus={() => setFocusTaskId(task.id)}
-						key={task.id} // Use unique id as key
-						id={task.id}
-						status={task.status}
-						details={task.details}
-						dueDate={task.dueDate} // Pass Date object directly
-						onDeleteTask={onDeleteTask}
-						onEditTask={onEditTask}
-					/>
-				))}
-			</div>
+      <div>
+			<FilterBar taskList={taskList} setStatusFilter={setStatusFilter} />
 
-			<div className="side-bar-right">
-				<div className="side-bar-card">
-					<h3>Create Task</h3>
-					<TaskForm addNewTask={addNewTask} />
-				</div>
-			</div>
+      <TaskViewer
+				taskList={filteredTaskList}
+				focusTaskId={focusTaskId}
+				setFocusTaskId={setFocusTaskId}
+				onDeleteTask={onDeleteTask}
+				onEditTask={onEditTask}
+				addNewTask={addNewTask}
+			/>
 		</div>
 	);
 }

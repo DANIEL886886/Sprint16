@@ -9,6 +9,7 @@ function TaskForm(props) {
 	};
 
 	const [formData, setFormData] = useState(initialFormData);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setFormData(initialFormData);
@@ -23,6 +24,11 @@ function TaskForm(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		if (!formData.status || !formData.dueDate || !formData.details) {
+			setError("Please fill in all fields");
+			return;
+		}
+		setError(null);
 		console.log("FormData is : ", formData);
 		setFormData({ ...initialFormData });
 		props.addNewTask(formData);
@@ -31,10 +37,11 @@ function TaskForm(props) {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
+				{error && <p style={{ color: "red" }}>{error}</p>}
 				<div className="form-row">
 					<label htmlFor="status">Task Status</label>
 					<select
-						id="status" // Added id here
+						id="status"
 						defaultValue={formData.status}
 						name="status"
 						onChange={handleInputChange}
@@ -49,7 +56,7 @@ function TaskForm(props) {
 				<div className="form-row">
 					<label htmlFor="dueDate">Due Date</label>
 					<input
-						id="dueDate" // Added id here
+						id="dueDate"
 						value={formData.dueDate}
 						name="dueDate"
 						onChange={handleInputChange}
@@ -61,7 +68,7 @@ function TaskForm(props) {
 				<div className="form-row">
 					<label htmlFor="details">Task Details</label>
 					<textarea
-						id="details" // Added id here
+						id="details"
 						value={formData.details}
 						name="details"
 						onChange={handleInputChange}

@@ -1,0 +1,18 @@
+.status-bar {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width:550px;
+  height:40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
+  /* border: 1px solid #a8abbd; */
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 1%;
+  margin-top:2%;
+  margin-bottom: 1%;
+    
+}

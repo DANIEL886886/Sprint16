@@ -1,10 +1,9 @@
-// DateContainer.js
 import "./DateContainer.css";
 import React from "react";
 
 function DateContainer(props) {
-	const date = new Date(props.date); // parse the date string into a Date object
-
+  const date = new Date(props.date);
+  
 	const handleDateChange = (e) => {
 		props.onDateChange(e.target.value);
 	};
