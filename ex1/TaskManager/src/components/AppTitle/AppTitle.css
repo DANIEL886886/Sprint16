@@ -1,0 +1,18 @@
+.title {
+  padding: 5px 10px;
+  border-radius: 12px;
+  width: 250px;
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 1%;
+  background: #ffffff;
+  box-shadow: 0px 30px 60px rgba(26, 59, 99, 0.15);
+  border-radius: 12px;
+}
+
+.title p {
+  color: #000000;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 14px;
+}
