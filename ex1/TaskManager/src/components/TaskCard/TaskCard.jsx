@@ -9,7 +9,7 @@ function TaskCard(props) {
 	const [editedTaskDetails, setEditedTaskDetails] = useState(props.details);
 	const [editedTaskStatus, setEditedTaskStatus] = useState(props.status);
 	const [editedTaskDate, setEditedTaskDate] = useState(props.dueDate);
-
+	
 	const handleDelete = (e) => {
 		e.stopPropagation();
 		props.onDeleteTask(props.id);
@@ -58,7 +58,12 @@ function TaskCard(props) {
 	}
 
 	return (
-		<div className={`card-wrapper ${focusedClass}`} onClick={setFocused}>
+		<div
+			className={`card-wrapper ${focusedClass} ${
+				props.theme === "dark" ? "dark-theme" : ""
+			}`}
+			onClick={setFocused}
+		>
 			<div className="card-header">
 				<p className="task-id">{props.id}</p>
 				{isEditMode ? (

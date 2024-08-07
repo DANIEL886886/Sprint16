@@ -1,6 +1,7 @@
 import React from "react";
 import TaskCard from "../../components/TaskCard/TaskCard.jsx";
 import TaskForm from "../../components/TaskForm/TaskForm.jsx";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
 
 const TaskViewer = ({
 	taskList,
@@ -9,9 +10,14 @@ const TaskViewer = ({
 	onDeleteTask,
 	onEditTask,
 	addNewTask,
+	theme,
+	setTheme,
 }) => {
 	return (
-		<div className="app-container">
+		<div
+			className={`app-container ${theme === "dark" ? "dark-theme" : ""}`}
+		>
+			<ThemeSwitcher theme={theme} setTheme={setTheme} />
 			<div className="app-content">
 				{taskList.map((task) => (
 					<TaskCard
@@ -24,6 +30,7 @@ const TaskViewer = ({
 						dueDate={task.dueDate}
 						onDeleteTask={onDeleteTask}
 						onEditTask={onEditTask}
+						theme={theme}
 					/>
 				))}
 			</div>

@@ -6,11 +6,7 @@ const ThemeSwitcher = ({ theme, setTheme }) => {
 	};
 
 	return (
-		<button onClick={handleThemeChange}>
-			{theme === "light"
-				? "Switch to Dark Theme"
-				: "Switch to Light Theme"}
-		</button>
+		<></>
 	);
 };
 

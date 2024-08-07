@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { data as initialData } from "./components/AppData/Data";
 import TaskViewer from "./components/TaskViewer/TaskViewer";
 import FilterBar from "./components/FilterBar/FilterBar";
+import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 
 const loadTasksFromLocalStorage = () => {
 	const tasks = localStorage.getItem("tasks");
@@ -27,10 +28,11 @@ const generateTaskId = (taskList) => {
 };
 
 function App() {
-	const [taskList, setTaskList] = useState(loadTasksFromLocalStorage);
-	const [counter, setCounter] = useState(loadTasksFromLocalStorage().length);
-	const [focusTaskId, setFocusTaskId] = useState("");
-	const [statusFilter, setStatusFilter] = useState(null);
+  const [taskList, setTaskList] = useState(loadTasksFromLocalStorage);
+  const [counter, setCounter] = useState(loadTasksFromLocalStorage().length);
+  const [focusTaskId, setFocusTaskId] = useState("");
+  const [statusFilter, setStatusFilter] = useState(null);
+  const [theme, setTheme] = useState("light");
 
 	useEffect(() => {
 		saveTasksToLocalStorage(taskList);
@@ -87,16 +89,23 @@ function App() {
 	});
 
 	return (
-      <div>
-			<FilterBar taskList={taskList} setStatusFilter={setStatusFilter} />
+		<div className={theme === "light" ? "light-theme" : "dark-theme"}>
+			<FilterBar
+				taskList={taskList}
+				setStatusFilter={setStatusFilter}
+				theme={theme}
+				setTheme={setTheme}
+			/>
 
-      <TaskViewer
+			<TaskViewer
 				taskList={filteredTaskList}
 				focusTaskId={focusTaskId}
 				setFocusTaskId={setFocusTaskId}
 				onDeleteTask={onDeleteTask}
 				onEditTask={onEditTask}
 				addNewTask={addNewTask}
+				theme={theme}
+				setTheme={setTheme}
 			/>
 		</div>
 	);

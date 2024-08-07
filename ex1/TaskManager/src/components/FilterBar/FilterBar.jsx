@@ -1,7 +1,8 @@
 import React from "react";
 import "../../components/FilterBar/FilterBar.css";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
-const StatusBar = ({ taskList, setStatusFilter }) => {
+const StatusBar = ({ taskList, setStatusFilter, theme, setTheme }) => {
 	const statuses = ["To-Do", "In-Progress", "Urgent", "Done"];
 	const statusCounts = {};
 
@@ -19,6 +20,13 @@ const StatusBar = ({ taskList, setStatusFilter }) => {
 
 	return (
 		<div className="status-bar">
+			<button
+				className="themebutton"
+				onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+			>
+				{theme === "light" ? "🌙" : "☀️"}
+			</button>
+
 			<button
 				className="status-filter-btn"
 				onClick={() => handleStatusClick(null)}

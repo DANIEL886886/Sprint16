@@ -1,9 +1,8 @@
 .status-bar {
   display:flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width:550px;
+  width:650px;
   height:46px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
@@ -35,4 +34,36 @@
 
 .status-name {
   font-weight: bold;
+}
+
+.themebutton {
+  border-radius: 50px;
+  padding: 4px 5px 5px 5px;
+}
+
+.dark-theme .themebutton {
+  background-color: black;
+  border-color:white;
+}
+
+.dark-theme .status-bar{
+  background-color: black;
+}
+
+.dark-theme .status-filter-btn {
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(253, 253, 253);
+  color:white;
+}
+
+.dark-theme .status-filter-btn:hover{
+  color:rgb(243, 243, 117);
+  border-style:solid;
+  border-width: 2px;
+  border-color:rgb(243, 243, 117) ;
+  font-weight: bold;
+  padding: 4px 8px;
+  /* border: 2px solid #a8abbd4f; */
+  border-radius: 15px;
+  cursor: pointer;
 }
