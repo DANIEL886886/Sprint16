@@ -1,4 +1,3 @@
-// TaskCard.js
 import "./TaskCard.css";
 import Badge from "../Badge/Badge";
 import DateContainer from "../DateContainer/DateContainer";
@@ -9,7 +8,7 @@ function TaskCard(props) {
 	const [editedTaskDetails, setEditedTaskDetails] = useState(props.details);
 	const [editedTaskStatus, setEditedTaskStatus] = useState(props.status);
 	const [editedTaskDate, setEditedTaskDate] = useState(props.dueDate);
-	
+
 	const handleDelete = (e) => {
 		e.stopPropagation();
 		props.onDeleteTask(props.id);
@@ -107,7 +106,7 @@ function TaskCard(props) {
 						</option>
 					</select>
 				) : (
-					<Badge status={props.status} />
+					<Badge status={props.status} theme={props.theme} />
 				)}
 			</div>
 
@@ -127,6 +126,7 @@ function TaskCard(props) {
 					date={isEditMode ? editedTaskDate : props.dueDate}
 					isEditMode={isEditMode}
 					onDateChange={handleDateChange}
+					theme={props.theme}
 				/>
 				{props.isFocused ? (
 					<button className="task-btn-delete" onClick={handleDelete}>
@@ -141,15 +141,15 @@ function TaskCard(props) {
 							<button
 								className="task-btn-save"
 								onClick={handleSaveChanges}
-							>
-								✅
-							</button>
+              >
+                ✅
+              </button>
 							<button
 								className="task-btn-cancel"
 								onClick={handleCancelChanges}
-							>
-								❌
-							</button>
+              >
+                ❌
+              </button>
 						</>
 					) : (
 						<button className="task-btn-edit" onClick={handleEdit}>
