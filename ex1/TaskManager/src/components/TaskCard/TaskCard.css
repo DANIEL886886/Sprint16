@@ -11,10 +11,6 @@
   margin: 20px;
 }
 
-.card-wrapper p {
-  margin: 0;
-}
-
 .card-content textarea {
   font-weight: bold;
   font-size: 14px;
@@ -68,6 +64,10 @@
   line-height: 17px;
   color: #b9b9b9;
   font-weight: 700;
+}
+
+.card-wrapper p {
+  margin: 0;
 }
 
 .card-content {
@@ -180,3 +180,10 @@
 .card-header select option.selected {
   background-color: #dcdcfc;; /* Change background color of selected option */
 }
+
+/* DARK THEME */
+.card-wrapper.dark-theme p {
+  margin: 0;
+  color:white;
+}
+
